@@ -1,0 +1,124 @@
+class Node {
+    int data;
+    Node next;
+
+    public Node(int value) {
+        this.data = value;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    static Node head;
+    static int lastDeletedPosition = -1;
+
+    static void insertAtBegin(int data) {
+        Node matt = new Node(data);
+        matt.next = head;
+        head = matt;
+    }
+    
+    static void deleteatbegin() {
+        head = head.next;
+        }
+        
+    static void deleteAtPosition(int position) {
+    if (head == null) {
+        System.out.println("List is empty. Nothing to delete.");
+        lastDeletedPosition = -1;
+        return;
+    }
+
+    Node current = head;
+    int count = 0;
+
+    while (current != null && count < position) {
+        current = current.next;
+        count++;
+    }
+
+    if (current == null) {
+        System.out.println("Invalid position. No node deleted.");
+        lastDeletedPosition = -1;
+        return;
+    }
+
+    current.data = 0;
+    lastDeletedPosition = position;
+}
+
+    static void deleteatend() {
+        Node secondLast = head;
+        while(secondLast.next.next != null) {
+            secondLast = secondLast.next;
+        }
+        secondLast.next = null;
+    }
+    
+    static void sortDescending() {
+    if (head == null || head.next == null) {
+        return; 
+    }
+
+    boolean swapped;
+    do {
+        swapped = false;
+        Node current = head;
+
+        while (current.next != null) {
+            if (current.data > current.next.data) {  
+                int temp = current.data;
+                current.data = current.next.data;
+                current.next.data = temp;
+                swapped = true;
+            }
+            current = current.next;
+            }
+        } while (swapped);
+    }
+
+    static void printList() {
+        Node current = head;
+        System.out.print("[");
+        boolean isFirst = true;
+        while (current != null) {
+            if (!isFirst) {
+                System.out.print(", ");
+            }
+            System.out.print(current.data);
+            isFirst = false;
+            current = current.next;
+        }
+        System.out.println("]");
+        }
+    }
+
+public class Main {
+    public static void main(String args[]) {
+        int m = 0;
+        LinkedList.insertAtBegin(12);
+        LinkedList.insertAtBegin(22);
+        LinkedList.insertAtBegin(30);
+        LinkedList.insertAtBegin(44);
+        LinkedList.insertAtBegin(50);
+        LinkedList.insertAtBegin(33);
+        System.out.print("Linked List: ");
+        
+        LinkedList.printList();
+        LinkedList.deleteatbegin();
+        System.out.print("Linked list after deletion");
+        LinkedList.printList();
+        
+        LinkedList.deleteatend();
+        System.out.print("Linked list after deletion at end: ");
+        LinkedList.printList();
+        
+        LinkedList.deleteAtPosition(1);
+        System.out.print("Linked list after deletion: ");
+        LinkedList.printList();
+        
+        LinkedList.sortDescending();
+        System.out.print("Sorted Descending: ");
+        LinkedList.printList();
+    }
+}
