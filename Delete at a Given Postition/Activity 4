@@ -224,7 +224,7 @@ public class Main {
         
         LinkedList.removeByValue("Matthew");
         LinkedList.removeByValue("LJ");
-        System.out.print("After trying to remove value 100: ");
+        System.out.print("Linked list after removing a value: ");
         LinkedList.printList();
 
 
