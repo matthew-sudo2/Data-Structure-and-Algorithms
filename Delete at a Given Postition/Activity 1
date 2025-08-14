@@ -105,13 +105,8 @@ class LinkedList {
         return;
     }
     
-    if (current.data instanceof Integer && ((Integer) current.data) == 0) {
-        current.data = data;
-    } else {
-        current.data = data;
-    }
+    current.data = data;
 }
-
 
     static void sortAscending() {
         if (head == null || head.next == null) {
