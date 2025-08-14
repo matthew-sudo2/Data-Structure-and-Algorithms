@@ -114,7 +114,6 @@ class LinkedList {
         return;
     }
 
-    // Check if head node matches the value
     if (head.data != null && head.data.equals(value)) {
         head = head.next;
         return;
@@ -222,8 +221,7 @@ public class Main {
         System.out.print("Linked list after nickname set: ");
         LinkedList.printList();
         
-        LinkedList.removeByValue("Matthew");
-        LinkedList.removeByValue("LJ");
+        LinkedList.removeByValue(30);
         System.out.print("Linked list after removing a value: ");
         LinkedList.printList();
 
